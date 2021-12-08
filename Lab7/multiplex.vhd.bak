@@ -1,0 +1,29 @@
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use ieee.std_logic_unsigned.all;
+
+entity multiplex8_2 is
+  port(
+    V1      	: in  std_logic_vector(31 downto 0);
+	 V2      	: in  std_logic_vector(31 downto 0);
+	 V3      	: in  std_logic_vector(31 downto 0);
+	 V4      	: in  std_logic_vector(31 downto 0);
+	 X1      	: in  std_logic_vector(31 downto 0);
+	 X2      	: in  std_logic_vector(31 downto 0);
+	 X3      	: in  std_logic_vector(31 downto 0);
+	 X4      	: in  std_logic_vector(31 downto 0);
+	 F_out1      : out  std_logic_vector(31 downto 0);
+	 F_out2      : out  std_logic_vector(31 downto 0)
+	 );
+end multiplex8_2;
+
+architecture behavioral of multiplex8_2 is
+signal multRes   : std_logic_vector(63 downto 0);
+begin
+  process (V1,V2) is
+  begin
+		multRes <= V1*V2; 
+		F_out <= multRes(31 downto 0);
+  end process;
+end behavioral;

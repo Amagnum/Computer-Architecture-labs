@@ -1,0 +1,14 @@
+library BITLIB;
+use BITLIB.bit_pack.all;
+entity FMUL is 
+port (CLK, 
+		St: in bit; 
+		F1,E1,F2,E2: in bit_vector(3 downto 0);
+		F: out bit_vector(6 downto 0); 
+		V, done:out bit);
+end FMUL;
+
+architecture FMULB of FMUL is 
+signal A, B, C: bit_vector(3 downto 0);-- fraction registers
+signal X, Y: bit_vector(4 downto 0);   -- exponent registers
+signal Load, Adx, Mdone, SM8, RSF, LSF, NC: bit;  signal AdSh, Sh, Cm: bit;

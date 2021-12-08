@@ -1,0 +1,22 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity register32 is 
+	port (clock, resetn, E: in std_logic;  
+			D: in std_logic_vector (31 downto 0);  
+			Q: out std_logic_vector (31 downto 0));
+end register32;
+
+architecture bhvR32 of register32 is 
+begin
+	process (resetn,E,clock) 
+	begin 
+		if resetn = '0' then   
+			Q <= (others => '0'); 
+		elsif (clock'event and clock = '1') then   
+			if E = '1' then 
+			Q <= D;
+			end if; 
+		end if; 
+	end process;
+end bhvR32;
